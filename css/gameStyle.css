@@ -1,0 +1,34 @@
+* {
+
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.gameboard{
+    width: 100%;
+    height: 700px;
+    border: 1px solid #333;
+    margin: 0 auto;
+    position: relative;
+}
+
+.referencia {
+    width: 400px;
+    height: 200px;
+    margin: 0 auto;
+    border: 1px solid #333;
+    margin: 110px auto;
+    text-align: center;
+}
+
+.selecao {
+    width: 100%;
+    height: 200px;
+    margin: 0;
+    border: 1px solid #333;
+    text-align: center;
+}
+
+.botao {
+    width: 100px;
+}
