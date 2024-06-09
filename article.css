@@ -1,0 +1,44 @@
+html {
+	scroll-behavior: smooth;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+}
+
+.leftnav {
+	white-space: nowrap;
+	width: fit-content;
+	margin-right: 20px;
+	padding-right: 20px;
+	font-size: large;
+	font-family: 'arial Narrow';
+}
+
+ul {
+	list-style-type: square;
+}
+
+li::marker {
+	color: #D1551F;
+}
+
+.artigo {
+	flex-grow: 1;
+	width: max-content;
+	text-align: justify;
+	font-size: large;
+	font-family: 'Segoe UI', Tahoma;
+	margin-right: 45px;
+}
+
+.textbox {
+	border: thin dashed black;
+	width: 30%;
+	float: right;
+	margin: 20px;
+	padding: 5px;
+	font-size: small;
+	font-style: italic;
+}

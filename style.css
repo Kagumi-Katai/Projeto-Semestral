@@ -1,0 +1,85 @@
+body {
+	background-image: url("bg.png");
+	margin: 0;
+}
+
+header {
+	text-align: center;
+}
+
+.logo {
+	padding: 50px;
+}
+
+#imagem {
+	height: 75px;
+}
+
+.topnav {
+	margin-left: 5%;
+	margin-right: 5%;
+	background-color: #230B00;
+	display: flex;
+	justify-content: center;
+	color: #D1551F;
+	height: 50px;
+}
+
+.topnav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.topnav li {
+	float: left;
+	height: 100%;
+	margin: auto;
+}
+
+.topnav li a {
+	display: block;
+	color: #D1551F;
+	padding-left: 36px;
+	padding-right: 36px;
+	text-decoration: none;
+	font-size: 23px;
+	height: 100%;
+	padding-top: 10px;
+}
+
+.topnav li a:hover {
+	background-color: #441f0e;
+}
+
+iframe {
+	width: 100%;
+}
+
+.main {
+	background-color: white;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 200px;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	padding: 15px;
+	display: flex;
+	flex-direction: row;
+	height: 1600px;
+}
+
+.bibliografia {
+	padding: 10px;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+footer {
+	background-color: #230B00;
+	padding: 10px;
+	color: #D1551F;
+	height: 100px;
+	text-align: center;
+}
