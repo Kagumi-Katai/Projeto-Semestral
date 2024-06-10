@@ -9,14 +9,17 @@
 
 <body>
     <div class="gameboard">
-        <div class="referencia">
+        <div class="reference_box">
             <canvas id="reference" style="border:1px dashed #000000;"></canvas>
+            <div class="score">Pontuação: <span id="score">0</span></div>
         </div>
+
         
-        <div class="selecao">
-            <canvas class="optionCanvas" id="optionCanvas1" style="border:1px dashed #000000;"></canvas>
-            <canvas class="optionCanvas" id="optionCanvas2" style="border:1px dashed #000000;"></canvas>
-            <canvas class="optionCanvas" id="optionCanvas3" style="border:1px dashed #000000;"></canvas>
+        
+        <div class="selection">
+            <canvas class="optionCanvas" id="optionCanvas1"></canvas>
+            <canvas class="optionCanvas" id="optionCanvas2"></canvas>
+            <canvas class="optionCanvas" id="optionCanvas3"></canvas>
         </div>
 
         <script src="script.js"></script>

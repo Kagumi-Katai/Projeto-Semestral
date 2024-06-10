@@ -70,7 +70,7 @@ function startGame() {
 
         optionCanvasArray.forEach((canvas, i) => {
             if (i === correctOption) {
-                waveBuilder(canvas, referenceWave, 'blue');
+                waveBuilder(canvas, referenceWave, 'red');
             } else {
                 waveBuilder(canvas, waveSeed(), 'red');
             }
@@ -78,6 +78,7 @@ function startGame() {
             canvas.onclick = () => {
                 if (i === correctOption) {
                     score++;
+                    document.getElementById('score').innerText = score;
                     startNewRound();
                 } else {
                     optionCanvasArray.forEach(canvas => canvas.onclick = null);
@@ -90,37 +91,3 @@ function startGame() {
 }
 
 window.onload = startGame();
-
-/* 
-
-    function startNewRound() {
-        
-        
-
-        
-        optionCanvases.forEach((canvas, i) => {
-            if (index === correctOption) {
-                drawWave(canvas, referencePhase, 'red');
-            } else {
-                drawWave(canvas, generateRandomPhase(), 'red');
-            }
-
-            canvas.onclick = () => {
-                if (index === correctOption) {
-                    score++;
-                    document.getElementById('score').innerText = score;
-                    startNewRound();
-                } else {
-                    document.getElementById('result').innerText = 'Errado! Jogo terminado.';
-                    document.getElementById('resetButton').style.display = 'block';
-                    optionCanvases.forEach(canvas => canvas.onclick = null);
-                    updateHighScore();
-                }
-            };
-        });
-    }
-
-    startNewRound();
-}
-
-window.onload = setupGame; */
