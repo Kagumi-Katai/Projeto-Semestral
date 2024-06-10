@@ -1,9 +1,16 @@
+function geraAlturaOnda(){
+    var alturaOnda = [];
+    for (let i = 0; i < quantLinhas; i++){
+        alturaOnda.push(Math.floor(Math.random() * 50))
+    }
+}
+
 function criaOnda(canvas, cor) {
     const ctx = canvas.getContext('2d');
     const larguraCanvas = canvas.width;
     const alturaCanvas = canvas.height;
-    const decimo = larguraCanvas/100;
-    var i = decimo;
+    const quantLinhas = 100;
+    const decimo = larguraCanvas/quantLinhas;
     
     //limpa o retangulo e define o pincel
     ctx.clearRect(0, 0, larguraCanvas, alturaCanvas);
@@ -17,14 +24,13 @@ function criaOnda(canvas, cor) {
     ctx.stroke();
     
     //desenha as linhas verticais
-    for(var i = decimo; i < larguraCanvas; i = i + decimo){
+    for(let i = decimo; i < larguraCanvas; i = i + decimo){
         var alturaOnda = Math.floor(Math.random() * 50);
         ctx.beginPath();
         ctx.moveTo(i, alturaOnda);
         ctx.lineTo(i, (alturaCanvas)-alturaOnda);
         ctx.stroke();
     }
-    
 }
 
 function setupGame() {
