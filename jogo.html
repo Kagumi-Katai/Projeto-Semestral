@@ -3,20 +3,23 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- <link rel="stylesheet" href="css/gameStyle.css"> -->
+    <link rel="stylesheet" href="css/gameStyle.css">
     <title>Jogo da onda</title>
 </head>
 
 <body>
     <div class="gameboard">
+        <div class="referencia">
+            <canvas id="reference" style="border:1px dashed #000000;"></canvas>
+        </div>
+        
+        <div class="selecao">
+            <canvas class="optionCanvas" id="optionCanvas1" style="border:1px dashed #000000;"></canvas>
+            <canvas class="optionCanvas" id="optionCanvas2" style="border:1px dashed #000000;"></canvas>
+            <canvas class="optionCanvas" id="optionCanvas3" style="border:1px dashed #000000;"></canvas>
+        </div>
 
-        <canvas id="reference" width="600" height="600" style="border:1px solid #000000;"></canvas>
-
-        <canvas class="optionCanvas" id="optionCanvas1"></canvas>
-        <canvas class="optionCanvas" id="optionCanvas2"></canvas>
-        <canvas class="optionCanvas" id="optionCanvas3"></canvas>
-
-        <script src="jogo.js"></script>
+        <script src="script.js"></script>
     </div>
 </body>
 
