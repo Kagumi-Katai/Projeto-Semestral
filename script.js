@@ -1,4 +1,3 @@
-
 function waveSeed() {
     let wave_seed = [];
     for (let i = 0; i < 300; i++) {
@@ -35,6 +34,24 @@ function waveBuilder(canvas, seed, color) {
 
 }
 
+//cria sistema de pontuação
+var score = 0;
+var highScore = 0;
+var correctOption;
+
+//define a pontuação mais alta
+function setHighScore() {
+    if (score > highScore) {
+        highScore = score;
+        document.getElementById('highScore').innerText = highScore;
+    }
+}
+
+//botão replay
+function replay() {
+    return confirm("Fim de jogo! Deseja jogar novamente?");
+}
+
 function startGame() {
     //cria o canvas de referencia
     const referenceCanvas = document.getElementById('reference');
@@ -51,12 +68,9 @@ function startGame() {
     optionCanvasArray.forEach(canvas => {
         canvas.width = 300;
         canvas.height = 100;
-        canvas.classList.add('clickable');
     });
 
-    //cria sistema de pontuação
-    let score = 0;
-    let correctOption;
+
 
     //inicia um novo round
     function startNewRound() {
@@ -79,9 +93,15 @@ function startGame() {
                 if (i === correctOption) {
                     score++;
                     document.getElementById('score').innerText = score;
+                    setHighScore();
                     startNewRound();
                 } else {
-                    optionCanvasArray.forEach(canvas => canvas.onclick = null);
+                    correctOption = (optionCanvasArray.length + 1);
+                    if (replay()) {
+                        score = 0;
+                        document.getElementById('score').innerText = score;
+                        startNewRound();
+                    }     
                 }
             };
         });
@@ -89,5 +109,4 @@ function startGame() {
 
     startNewRound();
 }
-
 window.onload = startGame();
