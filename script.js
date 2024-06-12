@@ -58,23 +58,35 @@ function setHighScore() {
 
 //inicia a sessão do jogo
 function startGame() {
+
+    //inicia o valor do timer
     var timer = 14;
     document.getElementById('timer').innerText = timer + 1;
 
     //botão replay
     function replay() {
         incorrect.play();
-        if (confirm("Fim de jogo! Deseja jogar novamente?")) {
-            score = 0;
-            document.getElementById('score').innerText = score;
-            clearInterval(downTimer);
-            startGame();
-        } else {
-            timer = 0;
-        }
+        clearInterval(downTimer);
+        swal({
+            title: "Fim de jogo!",
+            text: "Deseja jogar novamente?",
+            icon: "warning",
+            buttons: ["Não", "Sim"]
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    score = 0;
+                    document.getElementById('score').innerText = score;
+                    clearInterval(downTimer);
+                    startGame();
+                } else {
+                    timer = 0;
+                    document.getElementById('timer').innerText = timer;
+                }
+            });
     }
 
-    //inicia o timer
+    //reduz o tempo do timer
     const downTimer = setInterval(function () {
         document.getElementById('timer').innerText = timer;
         if (timer > 0) {
