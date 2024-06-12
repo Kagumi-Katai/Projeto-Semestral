@@ -56,7 +56,6 @@ function setHighScore() {
 }
 
 
-
 //inicia a sessão do jogo
 function startGame() {
     var timer = 14;
