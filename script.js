@@ -150,6 +150,7 @@ function startGame() {
 
                 } else {
                     correctOption = (optionCanvasArray.length + 1);
+                    incorrect.play();
                     replay();
                 }
             };

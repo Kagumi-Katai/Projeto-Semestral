@@ -9,7 +9,7 @@
     height: 700px;
     margin: 0 auto;
     position: relative;
-    background-image: url(../src/jogobg.jpg);
+    background: radial-gradient(black, gray, white, white);
     background-repeat: no-repeat;
     background-size: cover;
 }
