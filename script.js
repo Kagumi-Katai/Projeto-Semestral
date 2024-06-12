@@ -1,4 +1,6 @@
+//Jogo de comparação de ondas.
 
+//gerador de seed para construção da onda
 function waveSeed() {
     let wave_seed = [];
     for (let i = 0; i < 300; i++) {
@@ -6,6 +8,7 @@ function waveSeed() {
     } return wave_seed;
 }
 
+//construtor da onda.
 function waveBuilder(canvas, seed, color) {
     //define o pincel, as dimensões do canvas e o meio do canvas
     const ctx = canvas.getContext('2d');
@@ -35,7 +38,60 @@ function waveBuilder(canvas, seed, color) {
 
 }
 
+//cria sistema de pontuação
+var score = 0;
+var highScore = 0;
+var correctOption;
+
+//cria os efeitos sonoros
+var correct = new Audio("./src/correct.wav");
+var incorrect = new Audio("./src/incorrect.wav");
+
+//define a pontuação mais alta
+function setHighScore() {
+    if (score > highScore) {
+        highScore = score;
+        document.getElementById('highScore').innerText = highScore;
+    }
+}
+
+
+
+//inicia a sessão do jogo
 function startGame() {
+    var timer = 14;
+    document.getElementById('timer').innerText = timer + 1;
+
+    //botão replay
+    function replay() {
+        incorrect.play();
+        if (confirm("Fim de jogo! Deseja jogar novamente?")) {
+            score = 0;
+            document.getElementById('score').innerText = score;
+            clearInterval(downTimer);
+            startGame();
+        } else {
+            timer = 0;
+        }
+    }
+
+    //inicia o timer
+    const downTimer = setInterval(function () {
+        document.getElementById('timer').innerText = timer;
+        if (timer > 0) {
+            timer = timer - 1;
+            console.log(timer);
+        } else {
+            clearInterval(downTimer);
+
+            if (replay()) {
+                score = 0;
+                document.getElementById('score').innerText = score;
+                startNewRound();
+            }
+        }
+    }, 1000);
+
     //cria o canvas de referencia
     const referenceCanvas = document.getElementById('reference');
     referenceCanvas.width = 300;
@@ -51,12 +107,7 @@ function startGame() {
     optionCanvasArray.forEach(canvas => {
         canvas.width = 300;
         canvas.height = 100;
-        canvas.classList.add('clickable');
     });
-
-    //cria sistema de pontuação
-    let score = 0;
-    let correctOption;
 
     //inicia um novo round
     function startNewRound() {
@@ -66,8 +117,7 @@ function startGame() {
         waveBuilder(referenceCanvas, referenceWave, 'blue')
 
         //sorteia qual das opções será a correta
-        correctOption = Math.floor(Math.random() * 3);
-
+        let correctOption = Math.floor(Math.random() * 3);
         optionCanvasArray.forEach((canvas, i) => {
             if (i === correctOption) {
                 waveBuilder(canvas, referenceWave, 'red');
@@ -75,19 +125,28 @@ function startGame() {
                 waveBuilder(canvas, waveSeed(), 'red');
             }
 
+            //verifica se a opção escolhida pelo jogador é a correta. Caso seja, o jogo começa um novo round e aumenta a pontuação. 
+            //Caso não seja, o jogo mostra a mensagem de fim de jogo.
             canvas.onclick = () => {
-                if (i === correctOption) {
+                if (i === correctOption && timer != 0) {
+                    correct.play();
                     score++;
                     document.getElementById('score').innerText = score;
+                    setHighScore();
                     startNewRound();
+                    timer += 1;
+                    document.getElementById('timer').innerText = timer + 1;
+
                 } else {
-                    optionCanvasArray.forEach(canvas => canvas.onclick = null);
+                    correctOption = (optionCanvasArray.length + 1);
+                    replay();
                 }
             };
         });
     }
 
+    //começa o primeiro round do jogo
     startNewRound();
 }
-
+//ao carregar a página começa uma nova sessão de jogo
 window.onload = startGame();
