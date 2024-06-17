@@ -28,10 +28,14 @@
 .timer {
     margin-top: 5px;
     font-family: system-ui;
-    font-size: 100px;
+    font-size: 50px;
     font-weight: bold;
     float: right;
     margin-right: 30px;
+}
+
+#timer {
+    font-size: 100px;
 }
 
 .reference_box {

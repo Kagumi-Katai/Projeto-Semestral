@@ -24,6 +24,10 @@ ul {
 	list-style-type: square;
 }
 
+.leftnav li {
+	padding: 3px;
+}
+
 li::marker {
 	color: #D1551F;
 }
@@ -52,11 +56,56 @@ li::marker {
 }
 
 .floatBox_left {
-	border: thin dashed black;
-	width: 30%;
+	background: #000;
+	border: thick solid black;
+	max-width: 30%;
+	height: fit-content;
 	float: left;
 	margin: 20px;
-	padding: 5px;
+	margin-top: 0;
 	font-size: small;
 	font-style: italic;
+}
+
+.img {
+	margin: 0;
+	width: 100%;
+	max-height: 350px;
+	object-fit: contain;
+}
+
+.integrantes {
+	display: flex;
+	flex-direction: row;
+	margin-top: 80px;
+}
+
+.flyer {
+	color: white;
+	background-color: #e76d39;
+	border: thin solid black;
+	border-radius: 20px;
+	margin: auto;
+	padding: 20PX;
+	width: 150px;
+	height: 330px;
+	transition: 0.3s
+}
+
+.flyer:hover {
+	background: #e84e23;
+}
+
+.flyer img {
+	background-color: white;
+	border: 3px solid black;
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+	margin: auto;
+	margin-bottom: 20px;
+}
+
+.flyer li::marker {
+	color: black;
 }

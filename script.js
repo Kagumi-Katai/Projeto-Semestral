@@ -67,7 +67,17 @@ function startGame() {
     function replay() {
         incorrect.play();
         clearInterval(downTimer);
-        swal({
+        if (confirm("Fim de jogo! Deseja jogar novamente?")) {
+            score = 0;
+            document.getElementById('score').innerText = score;
+            clearInterval(downTimer);
+            startGame();
+        } else {
+            timer = 0;
+            document.getElementById('timer').innerText = timer;
+
+        }
+        /* swal({
             title: "Fim de jogo!",
             text: "Deseja jogar novamente?",
             icon: "warning",
@@ -83,7 +93,7 @@ function startGame() {
                     timer = 0;
                     document.getElementById('timer').innerText = timer;
                 }
-            });
+            }); */
     }
 
     //reduz o tempo do timer
